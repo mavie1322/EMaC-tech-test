@@ -7,7 +7,10 @@ apiRouter.get("/", (_, res) => {
 });
 
 apiRouter.get("/recipes", (req, res) => {
-  console.log(req);
+  let query = req.query.exclude_ingredients;
+  let excludedIngredientsList = query.split(",");
+  console.log(excludedIngredientsList);
+
   fs.readFile(dataPath, "utf8", (err, data) => {
     if (err) {
       throw err;
